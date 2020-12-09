@@ -1,7 +1,2 @@
-## $5 Tech Unlocked 2021!
-[Buy and download this Video for only $ 5 on PacktPub.com](https://www.packtpub.com/)
------
-*The $5 campaign     runs from __December 15th 2020__ to __January 13th 2021__*
-
 # Modern-DevOps-Tips-Tricks-and-Techniques
 Modern DevOps Tips, Tricks, and Techniques, Published by Packt

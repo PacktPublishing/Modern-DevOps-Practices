@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-sidecar
+  labels:
+    app: flask-sidecar
+spec:
+  containers:
+  - name: flask-app
+    image: bharamicrosystems/flask-redis-secret
+  - name: redis-sidecar
+    image: bharamicrosystems/redis-secret
+    volumeMounts:
+    - mountPath: /redis-master
+      name: secret
+  volumes:
+  - name: secret
+    secret:
+      secretName: redis-secret
+      items:
+      - key: redis-secret
+        path: init.redis

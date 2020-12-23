@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: html-volume
+  initContainers:
+  - name: init-nginx
+    image: busybox:1.28
+    command: ['sh', '-c', 'mkdir -p /usr/share/nginx/html && wget -O /usr/share/nginx/html/index.html http://example.com']
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: html-volume
+  volumes:
+  - name: html-volume
+    emptyDir: {}

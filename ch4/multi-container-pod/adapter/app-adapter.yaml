@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-adapter
+  labels:
+    app: app-adapter
+spec:
+  volumes:
+  - name: logs
+    emptyDir: {}
+  containers:
+  - name: app-container
+    image: ubuntu
+    command: ["/bin/bash"]
+    args: ["-c", "while true; do echo 'This is a log line' >> /var/log/app.log; sleep 2;done"]
+    volumeMounts:
+    - name: logs
+      mountPath: /var/log
+  - name: log-adapter
+    image: ubuntu
+    command: ["/bin/bash"]
+    args: ["-c", "apt update -y && apt install -y moreutils && tail -f /var/log/app.log | ts '[%Y-%m-%d %H:%M:%S]' > /var/log/out.log"]
+    volumeMounts:
+    - name: logs
+      mountPath: /var/log

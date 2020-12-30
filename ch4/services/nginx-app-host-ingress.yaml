@@ -7,14 +7,14 @@ spec:
   - host: v1.example.com
     http:
       paths:
-      - path: /
+      - path: "/"
         backend:
           serviceName: nginx-v1
           servicePort: 80
   - host: v2.example.com
     http:
       paths:
-      - path: /
+      - path: "/"
         backend:
           serviceName: nginx-v2
           servicePort: 80

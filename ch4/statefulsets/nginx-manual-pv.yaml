@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nginx-manual-pv
+  labels:
+    usage: nginx-manual-disk
+spec:
+  capacity:
+    storage: 50G
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: nginx-manual
+    fsType: ext4

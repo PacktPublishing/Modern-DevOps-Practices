@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx-manual
+spec:
+  selector:
+    matchLabels:
+      app: nginx-manual
+  serviceName: "nginx-manual"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-manual
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: html
+    spec:
+      storageClassName: ""
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 40Gi
+      selector:
+        matchLabels:
+          usage: nginx-manual-disk

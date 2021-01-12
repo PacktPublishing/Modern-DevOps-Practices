@@ -1,3 +1,4 @@
+useradd --no-create-home --shell /bin/false node_exporter
 curl -LO https://github.com/prometheus/node_exporter/releases/download/v0.15.1/node_exporter-0.15.1.linux-amd64.tar.gz
 tar xvf node_exporter-0.15.1.linux-amd64.tar.gz
 cp node_exporter-0.15.1.linux-amd64/node_exporter /usr/local/bin

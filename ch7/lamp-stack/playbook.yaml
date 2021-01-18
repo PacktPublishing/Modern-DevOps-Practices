@@ -1,0 +1,6 @@
+---
+- import_playbook: apt-update.yaml
+- import_playbook: install-webserver.yaml
+- import_playbook: install-dbserver.yaml
+- import_playbook: setup-webservers.yaml
+- import_playbook: setup-dbservers.yaml

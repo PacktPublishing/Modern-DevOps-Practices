@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Upload application file
+    copy:
+      src: index.php
+      dest: /var/www/html
+      mode: 0755
+    notify:
+      - Restart Apache
+  handlers:
+  - name: Restart Apache
+    service: name=apache2 state=restarted

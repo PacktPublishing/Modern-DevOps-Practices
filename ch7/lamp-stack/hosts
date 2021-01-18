@@ -3,4 +3,4 @@ web ansible_host=web
 [dbservers]
 db ansible_host=db
 [all:vars]
-ansible_python_interpreter=/usr/bin/python3
+#ansible_python_interpreter=/usr/bin/python3

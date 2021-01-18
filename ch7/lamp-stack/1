@@ -1,0 +1,30 @@
+---
+- hosts: dbservers
+  become: true
+  vars:
+    mysql_root_password: "Password1"
+  tasks:
+  - name: Set the root password
+    mysql_user:
+      name: bob
+      password: "{{ mysql_root_password }}"
+      priv: '*.*:ALL'
+      state: present
+  - name: Remove all anonymous user accounts
+    mysql_user:
+      name: ''
+      host_all: yes
+      state: absent
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+  - name: Remove the MySQL test database
+    mysql_db:
+      name: test
+      state: absent
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+    notify:
+    - Restart MySQL
+  handlers:
+  - name: Restart MySQL
+    service: name=mysql state=restarted

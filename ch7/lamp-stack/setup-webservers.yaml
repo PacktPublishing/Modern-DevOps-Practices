@@ -2,6 +2,10 @@
 - hosts: webservers
   become: true
   tasks:
+  - name: Delete index.html file
+    file:
+      path: /var/www/html/index.html
+      state: absent
   - name: Upload application file
     copy:
       src: index.php

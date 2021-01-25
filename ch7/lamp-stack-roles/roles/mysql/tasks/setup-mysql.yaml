@@ -1,0 +1,41 @@
+---
+- name: Set the root password
+  template:
+    src: ../templates/client.my.cnf.j2
+    dest: "/root/.my.cnf"
+    mode: 0600
+  notify:
+  - Restart MySQL
+- name: Create a test user
+  mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    state: present
+    priv: '*.*:ALL,GRANT'
+    host: '%'
+- name: Remove all anonymous user accounts
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+  notify:
+  - Restart MySQL
+- name: Remove the MySQL test database
+  mysql_db:
+    name: test
+    state: absent
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+  notify:
+  - Restart MySQL
+- name: Change bind address
+  lineinfile:
+    path:  /etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp: ^bind-address
+    line: 'bind-address            = 0.0.0.0'
+  notify:
+  - Restart MySQL

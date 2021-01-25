@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  become: true
+  roles:
+    - common
+    - apache
+- hosts: dbservers
+  become: true
+  roles:
+    - common
+    - mysql

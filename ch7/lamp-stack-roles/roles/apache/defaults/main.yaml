@@ -1,0 +1,3 @@
+---
+mysql_user: "testuser"
+mysql_password: "Password@1"

@@ -1,0 +1,3 @@
+---
+- include: install-mysql.yaml
+- include: setup-mysql.yaml

@@ -1,0 +1,9 @@
+- hosts: webservers
+  tasks:
+    - name: Get free space
+      command: df -h
+      register: free_space
+      ignore_errors: true
+    - name: Print the free space from the previous task
+      debug: 
+        msg: "{{ free_space }}"

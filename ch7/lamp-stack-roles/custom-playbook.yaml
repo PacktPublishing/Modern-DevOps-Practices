@@ -1,0 +1,17 @@
+---
+- hosts: webservers
+  become: true
+  roles:
+    - common
+    - role: apache
+      vars:
+        mysql_user: "foo"
+        mysql_password: "bar@123"
+- hosts: dbservers
+  become: true
+  roles:
+    - common
+    - role: mysql
+      vars:
+        mysql_user: "foo"
+        mysql_password: "bar@123"

@@ -60,10 +60,6 @@ resource "azurerm_lb" "main" {
     name                 = "PublicIPAddress"
     public_ip_address_id = azurerm_public_ip.main.id
   }
-
-  tags = {
-    environment = "codelab"
-  }
 }
 
 resource "azurerm_lb_backend_address_pool" "bpepool" {
@@ -144,8 +140,7 @@ resource "azurerm_virtual_machine_scale_set" "main" {
     }
   }
   
-  tags = {
-  }
+  tags = {}
 }
 
 resource "azurerm_network_security_group" "db_nsg" {

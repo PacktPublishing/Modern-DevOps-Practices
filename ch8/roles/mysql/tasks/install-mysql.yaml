@@ -1,0 +1,14 @@
+---  
+- name: Install packages
+  apt:
+    name:
+    - python-pymysql
+    - mysql-server
+    update_cache: yes 
+    cache_valid_time: 3600 
+    state: present
+- name: Start and enable MySQL service
+  service:
+    name: mysql
+    state: started
+    enabled: true

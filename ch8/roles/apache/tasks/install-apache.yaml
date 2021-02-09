@@ -1,0 +1,13 @@
+---
+- name: Install packages
+  apt: 
+    name:
+    - apache2
+    - php
+    - libapache2-mod-php
+    - php-mysql
+    update_cache: yes
+    cache_valid_time: 3600 
+    state: present
+- name: Start and Enable Apache service
+  service: name=apache2 state=started enabled=yes

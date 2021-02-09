@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "client_id": "{{env `CLIENT_ID`}}",
+    "client_secret": "{{env `CLIENT_SECRET`}}",
+    "tenant_id": "{{env `TENANT_ID`}}",
+    "subscription_id": "{{env `SUBSCRIPTION_ID`}}"
+  },
+  "builders": [{
+    "type": "azure-arm",
+    "client_id": "{{user `client_id`}}",
+    "client_secret": "{{user `client_secret`}}",
+    "tenant_id": "{{user `tenant_id`}}",
+    "subscription_id": "{{user `subscription_id`}}",
+    "managed_image_resource_group_name": "packer-rg",
+    "managed_image_name": "apache-webserver",
+    "os_type": "Linux",
+    "image_publisher": "Canonical",
+    "image_offer": "UbuntuServer",
+    "image_sku": "16.04-LTS",
+    "azure_tags": {},
+    "location": "West Europe",
+    "vm_size": "Standard_DS2_v2"
+  }],
+  "provisioners": [{
+      "type": "ansible",
+      "playbook_file": "./webserver-playbook.yaml"
+    }]
+}

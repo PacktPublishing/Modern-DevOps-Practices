@@ -5,6 +5,11 @@
     mysql_root_password: "Password@1"
   tasks:
   - name: Set the root password
+    mysql_user:
+      name: root
+      password: "{{ mysql_root_password }}"
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+  - name: Update the cnf file
     copy:
       src: client.my.cnf
       dest: "/root/.my.cnf"

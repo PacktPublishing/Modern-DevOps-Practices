@@ -1,0 +1,9 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: py-time
+spec:
+  template:
+    spec:
+      containers:
+        - image: bharamicrosystems/py-time

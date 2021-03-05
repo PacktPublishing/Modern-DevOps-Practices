@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  labels:
+    app: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      serviceAccountName: jenkins
+      volumes:
+      - name: jenkins-pv-storage
+        persistentVolumeClaim:
+          claimName: jenkins-pv-claim
+      containers:
+      - name: jenkins
+        image: bharamicrosystems/jenkins-master-kaniko
+        env:
+        - name: JAVA_OPTS
+          value: -Djenkins.install.runSetupWizard=false
+        ports:
+        - containerPort: 8080
+        - containerPort: 50000
+        volumeMounts:
+        - mountPath: "/var/jenkins_home"
+          name: jenkins-pv-storage
+      imagePullSecrets:
+      - name: regcred
+      initContainers:
+      - name: volume-mount-data-log
+        image: busybox
+        imagePullPolicy: Always
+        command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_home"]
+        volumeMounts:
+        - mountPath: "/var/jenkins_home"
+          name: jenkins-pv-storage
+

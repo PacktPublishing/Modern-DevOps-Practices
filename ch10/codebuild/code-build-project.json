@@ -2,7 +2,7 @@
   "name": "flask-app",
   "source": {
     "type": "CODECOMMIT",
-    "location": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/flask-app"
+    "location": "[YOUR_CODECOMMIT_HTTP_REPO_CLONE_URL]"
   },
   "artifacts": {
     "type": "NO_ARTIFACTS"
@@ -14,19 +14,27 @@
     "environmentVariables": [
       {
         "name": "AWS_DEFAULT_REGION",
-        "value": "us-east-1"
+        "value": "[YOUR_AWS_DEFAULT_REGION]"
       },
       {
         "name": "AWS_ACCOUNT_ID",
-        "value": "006739693794"
+        "value": "[YOUR_AWS_ACCOUNT_ID]"
+      },
+      {
+        "name": "DOCKER_USER",
+        "value": "[YOUR_DOCKER_USER]"
+      },
+      {
+        "name": "DOCKER_PASSWORD",
+        "value": "[YOUR_DOCKER_PASSWORD]"
       },
       {
         "name": "IMAGE_REPO_NAME",
-        "value": "bharamicrosystems/flask-app"
+        "value": "[YOUR_IMAGE_REPO_NAME]"
       },
       {
         "name": "IMAGE_TAG",
-        "value": "codebuild"
+        "value": "[YOUR_IMAGE_TAG]"
       }
     ],
     "privilegedMode": true

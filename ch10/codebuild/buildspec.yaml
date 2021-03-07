@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub
+      - docker login --username bharamicrosystems --password BharatMi#8485
+  build:
+    commands:     
+      - docker build -t bharamicrosystems/flask-app .
+  post_build:
+    commands:
+      - docker push bharamicrosystems/flask-app

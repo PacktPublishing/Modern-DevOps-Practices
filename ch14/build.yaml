@@ -1,0 +1,18 @@
+name: Build, Test, and Raise Pull Request
+on:
+  push:
+    branches: [ feature/* ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      id: build
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER  }}/flask-app-gitops
+    - name: Raise a Pull Request
+      id: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: master
+        github_token: ${{ secrets.GH_TOKEN }}

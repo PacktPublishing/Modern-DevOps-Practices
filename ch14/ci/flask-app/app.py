@@ -1,11 +1,16 @@
 from flask import Flask
 from flask import make_response
+import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-  return "Hello World!"
+  secret = os.environ.get('SECRET')
+  if secret is not None:
+    return "The secret is "+secret
+  else:
+    return "Secret not found"
 
 @app.route('/<page>')
 def default(page):

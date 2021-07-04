@@ -7,9 +7,9 @@ metadata:
 spec:
   containers:
   - name: flask-app
-    image: bharamicrosystems/flask-redis-secret
+    image: <your_dockerhub_user>/flask-redis-secret
   - name: redis-sidecar
-    image: bharamicrosystems/redis-secret
+    image: <your_dockerhub_user>/redis-secret
     volumeMounts:
     - mountPath: /redis-master
       name: secret

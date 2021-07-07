@@ -35,7 +35,7 @@ spec:
         app: flask-app
     spec:
       containers:
-        - image: '<your_docker_user>/flask-app:${trigger[''tag'']}'
+        - image: '<your_dockerhub_user>/flask-app:${trigger[''tag'']}'
           name: flask-app
           ports:
             - containerPort: 5000

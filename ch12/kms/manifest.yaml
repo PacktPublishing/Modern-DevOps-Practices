@@ -28,7 +28,7 @@ spec:
         app: flask-app
     spec:
       containers:
-        - image: 'bharamicrosystems/flask-app-secret:1'
+        - image: '<your_dockerhub_user>/flask-app-secret:1'
           name: flask-app
           ports:
             - containerPort: 5000

@@ -6,4 +6,4 @@ spec:
   template:
     spec:
       containers:
-        - image: bharamicrosystems/py-time
+        - image: <your_dockerhub_user>/py-time

@@ -1,2 +1,2 @@
-# Modern-DevOps-Tips-Tricks-and-Techniques
-Modern DevOps Tips, Tricks, and Techniques, Published by Packt
+# Modern-DevOps-Practices
+Modern DevOps Practices, Published by Packt

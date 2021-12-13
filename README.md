@@ -56,6 +56,10 @@ With the following software and hardware list you can run all code files present
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](http://www.packtpub.com/sites/default/files/downloads/9781800562387_ColorImages.pdf).
 
+## Errata
+
+* Page 137 (Paragraph 1, line 5): `['sh', '-c', 'cp -L /config/nginx.conf /etc/nginx/nginx.conf && sed -i "s/REDIS_HOST/${REDIS_HOST}/g" /etc/nginx/nginx.conf']` _should be_`['sh', '-c', 'cp -L /config/nginx.conf /etc/nginx/nginx.conf && sed -i "s/REDIS_HOST/${REDIS_HOST}/g" /etc/nginx/nginx.conf && sed -i "s/REDIS_PORT/${REDIS_PORT}/g" /etc/nginx/nginx.conf']"`
+
 ### Related products
 * Google Cloud for DevOps Engineers [[Packt]](https://www.packtpub.com/product/google-cloud-for-devops-engineers/9781839218019?utm_source=github&utm_medium=repository&utm_campaign=9781839218019) [[Amazon]](https://www.amazon.com/dp/1839218010)
 

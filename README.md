@@ -59,8 +59,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ## Errata
 
 * Page 137 (Paragraph 1, line 5): `['sh', '-c', 'cp -L /config/nginx.conf /etc/nginx/nginx.conf && sed -i "s/REDIS_HOST/${REDIS_HOST}/g" /etc/nginx/nginx.conf']` _should be_`['sh', '-c', 'cp -L /config/nginx.conf /etc/nginx/nginx.conf && sed -i "s/REDIS_HOST/${REDIS_HOST}/g" /etc/nginx/nginx.conf && sed -i "s/REDIS_PORT/${REDIS_PORT}/g" /etc/nginx/nginx.conf']"`
-* Page 252 (Paragraph 5, line 4): `$ sudo su - ansible` _should be_`$ sudo su - ansible`
-* Page 254 (Paragraph 4, line 1): `$ sudo su - ansible` _should be_`$ sudo su - ansible`
+* Page 252 (Paragraph 5, line 4): `$ sudo su – ansible` _should be_`$ sudo su - ansible`
+* Page 254 (Paragraph 4, line 1): `$ sudo su – ansible` _should be_`$ sudo su - ansible`
 
 ### Related products
 * Google Cloud for DevOps Engineers [[Packt]](https://www.packtpub.com/product/google-cloud-for-devops-engineers/9781839218019?utm_source=github&utm_medium=repository&utm_campaign=9781839218019) [[Amazon]](https://www.amazon.com/dp/1839218010)
